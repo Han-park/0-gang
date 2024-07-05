@@ -6,6 +6,7 @@ export default function Home() {
       <p>hello this is a daejangang website</p>
       <p>make shit, make happen</p>
       <p>LFG</p>
+      <p>Gonna publish this site at tmr</p>
     </main>
   );
 }
