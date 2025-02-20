@@ -7,7 +7,7 @@ export default function Home() {
       <div className="py-8 px-8">
         <div className="text-left text-yellow-200 flex flex-col gap-4 max-w-lg">
           <div>
-            <h1 className="text-4xl font-normal">창업가들의 집 '대장간'</h1>
+            <h1 className="text-4xl font-normal">창업가들의 집 &lsquo;대장간&rsquo;</h1>
             <p className="text-sm opacity-80">서울시 광진구, 대한민국</p>
           </div>
           <div>
