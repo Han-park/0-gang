@@ -42,7 +42,7 @@ export default function Home({ params: { lang } }: Props) {
 
   return (
     <main className="flex min-h-screen flex-col bg-black">
-      <div className="py-8 px-8 max-w-screen-lg mx-auto">
+      <div className="py-8 px-8:sm px-4 max-w-screen-lg mx-auto">
         <div className="flex justify-end mb-4">
           <LanguageSwitcher currentLang={lang} />
         </div>
