@@ -18,7 +18,7 @@ const content = {
     title: "창업가들의 집 '대장간'",
     location: "서울시 광진구, 대한민국",
     description1: "대장간은 1조 이상의 기업 가치를 만들 청년 창업가들이 모여 사는 공간이자 커뮤니티 플랫폼입니다. 2021년 서울 홍대에 만들어진 5AM Club House의 멤버들이 2023년 2월 시작했으며, 주로 IT 분야의 창업자 혹은 공동 창업자가 모여 있습니다.",
-    description2: "현재 6명이 거주하며 매주 인사이트 세미나를 열고, 매달 액티비티를 진행하고 있습니다.",
+    description2: "현재 6명이 거주하며 매주 인사이트 세미나를 열고, 한달에 한번 '담금질' 이라는 이름으로 액티비티를 진행하고 있습니다.",
     newsletter: "뉴스레터",
     instagram: "인스타그램",
     ...getMemberContent().ko,
@@ -95,7 +95,7 @@ export default function Home({ params: { lang } }: Props) {
       </div>
 
       {/* Footer with Logo */}
-      <footer className="mt-auto py-8 flex justify-center">
+      <footer className="mt-auto py-8 flex flex-col gap-2 items-center justify-center">
         <Image 
           src="/image/logo-600-600.png"
           alt="Daejangang Logo"
@@ -103,6 +103,10 @@ export default function Home({ params: { lang } }: Props) {
           height={60}
           className="opacity-50"
         />
+        <p className="text-sm opacity-30 text-center">
+          This website is designed and published <br/>
+          by Han Park of <Link href="https://cfp.han-park.info" target="_blank" className="underline">CFP & Co.</Link>
+        </p>
       </footer>
     </main>
   );
