@@ -42,7 +42,7 @@ export default function Home({ params: { lang } }: Props) {
 
   return (
     <main className="flex min-h-screen flex-col bg-black">
-      <div className="py-8 px-8:sm px-4 max-w-screen-lg mx-auto">
+      <div className="py-8 px-4 sm:px-8 max-w-screen-lg mx-auto">
         <div className="flex justify-end mb-4">
           <LanguageSwitcher currentLang={lang} />
         </div>
@@ -59,12 +59,12 @@ export default function Home({ params: { lang } }: Props) {
           </div>
 
           {/* Social Links */}
-          <div className="mt-4">
+          <div className="mt-4 text-white/50">
             <div className="flex gap-3">
               <Link 
                 href="https://daejangang.substack.com/" 
                 target="_blank"
-                className="px-3 py-1 border text-opacity-80 border-yellow-200/80 text-sm hover:bg-yellow-200 hover:text-zinc-900 transition-colors flex items-center gap-1"
+                className="px-3 py-1 border border-white/50 text-sm hover:bg-white/90 hover:text-zinc-900 transition-colors flex items-center gap-1"
               >
                 {t.newsletter}
                 <ArrowTopRightIcon className="w-3 h-3" />
@@ -72,7 +72,7 @@ export default function Home({ params: { lang } }: Props) {
               <Link 
                 href="https://www.instagram.com/daejangang_/" 
                 target="_blank"
-                className="px-3 py-1 border text-opacity-80 border-yellow-200/80 text-sm hover:bg-yellow-200 hover:text-zinc-900 transition-colors flex items-center gap-1"
+                className="px-3 py-1 border border-white/50 text-sm hover:bg-white/90 hover:text-zinc-900 transition-colors flex items-center gap-1"
               >
                 {t.instagram}
                 <ArrowTopRightIcon className="w-3 h-3" />
