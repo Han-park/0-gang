@@ -47,19 +47,32 @@ export function MemberDialog({ member, lang, isOpen, onClose }: MemberDialogProp
                   {member.description}
                 </p>
               )}
-
-              {member.linkedinUrl && (
-                <div className="pt-2">
+              <div className="flex gap-2 pt-2">
+              {member.snsUrl && (
+                <div>
                   <Link
-                    href={member.linkedinUrl}
+                    href={member.snsUrl}
                     target="_blank"
                     className="inline-flex items-center gap-1 text-sm text-yellow-200/60 hover:text-yellow-200 transition-colors"
                   >
-                    LinkedIn
+                    SNS
                     <ArrowTopRightIcon className="w-3 h-3" />
                   </Link>
                 </div>
               )}
+              {member.companyWebsiteUrl && (
+                <div>
+                  <Link
+                    href={member.companyWebsiteUrl}
+                    target="_blank"
+                    className="inline-flex items-center gap-1 text-sm text-yellow-200/60 hover:text-yellow-200 transition-colors"
+                  >
+                    Company Website
+                    <ArrowTopRightIcon className="w-3 h-3" />
+                  </Link>
+                </div>
+              )}
+              </div>
             </div>
           </div>
 

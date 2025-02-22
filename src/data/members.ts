@@ -9,12 +9,13 @@ export interface Member {
   company: string;
   koreanCompany: string;  // Add Korean company name
   imageUrl: string;
-  linkedinUrl?: string;
+  snsUrl?: string;
   description: string;  // Korean description
   englishDescription: string;  // English description
   detailContent?: string;  // Korean version
   englishDetailContent?: string;  // English version
   isAlumni: boolean;  // Add this field to distinguish current and alumni members
+  companyWebsiteUrl?: string;
 }
 
 // Static member data
@@ -82,31 +83,35 @@ I'm curious about how I can help you!`,
     role: "Founder",
     company: "CFP & Co.",
     koreanCompany: "CFP & Co.",
+    companyWebsiteUrl: "https://cfp.han-park.info/",
+    snsUrl: "https://www.instagram.com/jonghan_grida/",
     imageUrl: "/image/member/han.jpg",
-    description: "디자인 테크 스타트업 Grida의 COO. 디자이너, 개발자, 콘텐츠 제작자 등 다양한 역할을 수행하는 제네럴리스트.",
-    englishDescription: "A generalist who has worked as a designer, developer, and content creator. Previously COO at design tech startup Grida.",
-    detailContent: `3개월차 디자인 테크 스타트업 Grida Inc.의 COO를 맡고 있다. 전에는 디스콰이엇이라는 IT 커뮤니티 플랫폼 회사에서 오퍼레이터로 일했다.
+    description: "커뮤니티를 중심으로 하는 라이프스타일 테크 스튜디오 CFP & Co.의 설립자. 아티스트와 기업가를 지지하는 비전을 가지고 있다.",
+    englishDescription: "Recently founded a Community-First lifestyle tech studio, CFP & Co. Has a vision to support artists and entrepreneurs.",
+    detailContent:
+    
+    `AI의 힘을 빌려 Community-First Projects 를 하고 있다. 어릴 때부터 학생회, 스터디 등의 커뮤니티를 만들고 키워왔다.
 
-디자이너, 개발자, 콘텐츠 제작자로 일하는 등 대장간 멤버 중 가장 제네럴리스트에 가까운 성향을 가지고 있다.
+디자이너, 개발자, 콘텐츠 제작자로 일하는 등 제네럴리스트에 가까운 성향을 가지고 있다.
 
 2030년 전에 캘빈클라인 모델이 되는 것이 목표이다.
 
-김태훈과 함께 대장간 공주를 맡고 있다.
+Evan과 함께 대장간 2호실 멤버로서 비주얼을 담당하고 있다.
 
 대장간에서 가장 새로운 사람에 대한 낯가림이 적은 친구이다.
 
 New Aesthetica 라는 이름의 에세이 블로그를 쓰고 있다.`,
-    englishDetailContent: `3-month-old design tech startup Grida Inc. COO. Previously worked as an operator at a platform company called Disquaiy.
+    englishDetailContent: `I am working on Community-First Projects with the power of AI. Since childhood, I have created and nurtured communities such as student councils and study groups.
 
-He has the most generalist-like tendencies among the members of Daejangang, working as a designer, developer, etc.
+I have a generalist tendency, working as a designer, developer, and content creator.
 
-His goal is to become a Calvin Klein model by 2030.
+My goal is to become a Calvin Klein model by 2030.
 
-He's co-leading Daejangang with Kim Taehoon.
+I am responsible for visuals as a member of Room 2 at Daejangang alongside Evan.
 
-He's a close friend with the least amount of hesitation towards the newest member of Daejangang.
+I am a friend who has the least hesitation towards the newest member of Daejangang.
 
-He writes an essay blog called New Aesthetica.`,
+I write an essay blog called New Aesthetica.`,
     isAlumni: false
   },
   {
@@ -399,7 +404,7 @@ If you come to Daejangang, let's talk about many things! Welcome!
 > Company website link: https://onggoing.co.kr/
 >
 > Insta: https://www.instagram.com/jhyeongang/`,
-    linkedinUrl: "https://www.instagram.com/jhyeongang/",
+    snsUrl: "https://www.instagram.com/jhyeongang/",
     isAlumni: true
   },
   {
