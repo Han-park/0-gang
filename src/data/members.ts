@@ -262,29 +262,57 @@ I was the president of the theater club at the university for three years. I use
     company: "Wishes Inc.",
     koreanCompany: "위시즈",
     imageUrl: "/image/member/tyron.jpg",
-    description: "Description for member 6",
-    englishDescription: "Description for member 6",
+    description: "선물 서비스 만드는 사람. ASML, 삼성전자 출신",
+    englishDescription: "Founder of a gift service. Formerly at ASML and Samsung Electronics.",
+    companyWebsiteUrl: "https://wishes.kr",
+    detailContent: `대장간의 가장 막내이자 가장 형을 맡고 있다. 
+
+24년 12월 쉽지 않은 과정을 거치고 대장간에 합류하게 됐다. 
+
+25살부터 2년 반 ASML EUV 팀에서 외노자로, 
+
+이후 2년 반은 삼성전자 반도체연구소 3nm 팀에서 노예 경험,
+
+마지막으로 서울대 MBA를 졸업한 후,
+
+반도체와 전혀 상관없는 선물하기 관련 스타트업 ‘위시즈’를 창업했다.
+
+23년 7월에 시작해서, 24년엔 정말 힘들었지만,
+
+5월 5일 생일인 나는, 5x5 = 25년은 다를 것이라 자기 최면 걸고 한걸음 한걸음 나아가는 중이다!
+
+3월에는 새로운 프로덕트를 출시할 예정이다! 많은 관심과,, 결제,, 부탁한다.`,
+    englishDetailContent: `I am the youngest and the oldest in Daejangang.
+
+After going through a difficult process, I joined Daejangang in December 2024.
+
+From the age of 25, I worked as a foreign worker in the ASML EUV team for two and a half years,
+
+and then spent another two and a half years as a slave in the Samsung Electronics Semiconductor Research Institute's 3nm team.
+
+Finally, after graduating with an MBA from Seoul National University,
+
+I founded a startup called 'Wishes', which is completely unrelated to semiconductors.
+
+I started in July 2023, and it was really tough in 2024,
+
+but since my birthday is May 5th, I am convincing myself that 5x5 = 25 will be different, and I am taking one step at a time!
+
+I plan to launch a new product in March! I would appreciate your interest and support.`,
     isAlumni: false
   },
   {
     name: "Eubin Kim",
     koreanName: "김유빈",
-    role: "Research Head",
+    role: "Co-founder",
     company: "Cylinder",
     koreanCompany: "실린더",
     imageUrl: "/image/member/eubin.jpg",
-    description: "뤼튼에서 인문학과 인공지능의 교차점을 연구하는 NLP 전문가. 깃허브 스타 1천개 이상을 받은 연구 성과를 보유하고 있습니다.",
-    englishDescription: "NLP expert researching the intersection of humanities and AI. Achieved over 1,000 GitHub stars for NLP research.",
-    detailContent: `뤼튼에서 낄끼빠빠의 수학을 연구하고 있어. 인문학과 인공지능의 교차점에 서서 한쪽의 전문가는 보지 못하는 문제를 포착하고 그걸 수학으로 풀어내는 걸 즐김! 다양한 사람들과 교류하며 더 많은 교차점을 찾고 싶어!
-
-유빈이는 대전 사람이다. 그리고 동시에 영국 사람이다. 이 친구는 여름에도 shorts를 입지 않는다.
-
-유빈이는 한국에서 가장 뜨거운 AI 스타트업인 뤼튼에서 리서치 헤드를 맡고 있다. 그리고 깃허브에서 NLP 연구로 1천개의 star를 받기도 했다:`,
-    englishDetailContent: `I'm studying math at the intersection of humanities and artificial intelligence at Daejangang. I enjoy finding more intersections by interacting with various people!
-
-Eubin is from Daejeon and also from the UK. This friend doesn't wear shorts even in summer.
-
-Eubin is leading the research at Daejangang, one of the hottest AI startups in Korea. And he also received 1,000 stars on GitHub for NLP research:`,
+    description: "스토리에 글 올리는 혁신 호소인 (@eubinecto)",
+    englishDescription: "An innovator to-be. I post random thounghts on instagram prolifically. Find me at @eubinecto.",
+    detailContent: `유빈이의 인스타그램 스토리를 확인하세요.`,
+    englishDetailContent: `Check out Eubin's instagram story.`,
+    snsUrl: "https://www.instagram.com/eubinecto/",
     isAlumni: true
   },
   {
