@@ -261,24 +261,21 @@ I was the president of the theater club at the university for three years. I use
     role: "Founder",
     company: "Wishes Inc.",
     koreanCompany: "위시즈",
-    imageUrl: "/image/member/tyron.jpg",
-    description: "선물 서비스 만드는 사람. ASML, 삼성전자 출신",
-    englishDescription: "Founder of a gift service. Formerly at ASML and Samsung Electronics.",
+    imageUrl: "/image/member/tyron-2.jpg",
+    description: "선물하기 플랫폼 위시즈의 Founder. 커피/치킨 대신 의미 있는 선물을 주고 받는 위시즈를 만들어가고 있습니다.",
+    englishDescription: "Founder of Wishes, a gift platform. Creating Wishes, where people give and receive meaningful gifts instead of coffee and chicken.",
     companyWebsiteUrl: "https://wishes.kr",
     detailContent: `대장간의 가장 막내이자 가장 형을 맡고 있다. 
 
 24년 12월 쉽지 않은 과정을 거치고 대장간에 합류하게 됐다. 
 
 25살부터 2년 반 ASML EUV 팀에서 외노자로, 
-
 이후 2년 반은 삼성전자 반도체연구소 3nm 팀에서 노예 경험,
-
 마지막으로 서울대 MBA를 졸업한 후,
 
 반도체와 전혀 상관없는 선물하기 관련 스타트업 ‘위시즈’를 창업했다.
 
 23년 7월에 시작해서, 24년엔 정말 힘들었지만,
-
 5월 5일 생일인 나는, 5x5 = 25년은 다를 것이라 자기 최면 걸고 한걸음 한걸음 나아가는 중이다!
 
 3월에는 새로운 프로덕트를 출시할 예정이다! 많은 관심과,, 결제,, 부탁한다.`,
@@ -287,15 +284,12 @@ I was the president of the theater club at the university for three years. I use
 After going through a difficult process, I joined Daejangang in December 2024.
 
 From the age of 25, I worked as a foreign worker in the ASML EUV team for two and a half years,
-
 and then spent another two and a half years as a slave in the Samsung Electronics Semiconductor Research Institute's 3nm team.
-
 Finally, after graduating with an MBA from Seoul National University,
 
 I founded a startup called 'Wishes', which is completely unrelated to semiconductors.
 
 I started in July 2023, and it was really tough in 2024,
-
 but since my birthday is May 5th, I am convincing myself that 5x5 = 25 will be different, and I am taking one step at a time!
 
 I plan to launch a new product in March! I would appreciate your interest and support.`,
