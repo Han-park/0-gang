@@ -262,8 +262,8 @@ I was the president of the theater club at the university for three years. I use
     company: "Wishes Inc.",
     koreanCompany: "위시즈",
     imageUrl: "/image/member/tyron-2.jpg",
-    description: "선물하기 플랫폼 위시즈의 Founder. 커피/치킨 대신 의미 있는 선물을 주고 받는 위시즈를 만들어가고 있습니다.",
-    englishDescription: "Founder of Wishes, a gift platform. Creating Wishes, where people give and receive meaningful gifts instead of coffee and chicken.",
+    description: "선물하기 플랫폼 위시즈의 Founder. 커피 기프티콘 대신 의미 있는 선물을 주고 받는 위시즈를 만들어가고 있습니다.",
+    englishDescription: "Founder of Wishes, a gift platform. Creating Wishes, where people give and receive meaningful gifts instead of coffee coupons.",
     companyWebsiteUrl: "https://wishes.kr",
     detailContent: `대장간의 가장 막내이자 가장 형을 맡고 있다. 
 
