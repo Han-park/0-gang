@@ -92,7 +92,7 @@ export default function Home({ params: { lang } }: Props) {
           </div>
 
         {/* Current Members Section */}
-        <div className="mt-28 text-yellow-200">
+        <div className="mt-16 text-yellow-200">
           <h2 className="text-2xl mb-4">{t.currentMembersTitle}</h2>
           <MemberShuffle members={currentMembers} lang={lang} />
         </div>

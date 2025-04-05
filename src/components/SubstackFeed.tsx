@@ -11,8 +11,8 @@ export function SubstackFeed() {
       layout: "center",
       hidden: ["author"],
       colors: {
-        primary: "#FFFFFF",
-        secondary: "#B2B2B2",
+        primary: "#CBC06E",
+        secondary: "#A29A58",
         background: "#000000",
       }
     };
