@@ -4,6 +4,7 @@ import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { MemberShuffle } from "@/components/MemberShuffle";
 import { getMemberContent } from "@/data/members";
+import { SubstackFeed } from '@/components/SubstackFeed';
 
 // Define type for language parameter
 interface Props {
@@ -79,7 +80,16 @@ export default function Home({ params: { lang } }: Props) {
               </Link>
             </div>
           </div>
+
+         
+
         </div>
+
+         {/* Substack Feed Embed */}
+         <div className="mt-16">
+         <h2 className="text-2xl mb-4 text-yellow-200">{t.newsletterTitle}</h2>
+            <SubstackFeed/>
+          </div>
 
         {/* Current Members Section */}
         <div className="mt-28 text-yellow-200">

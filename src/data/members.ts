@@ -483,6 +483,7 @@ Please talk to me casually.`,
 export const getMemberContent = () => {
   return {
     ko: {
+      newsletterTitle: "최근 뉴스레터 글",
       currentMembersTitle: "멤버: 거주 중",
       alumniMembersTitle: "멤버: 알럼나이",
       members: memberData.map(member => ({
@@ -491,6 +492,7 @@ export const getMemberContent = () => {
       })),
     },
     en: {
+      newsletterTitle: "Recent Posts",
       currentMembersTitle: "Current House Members",
       alumniMembersTitle: "Alumni Members",
       members: memberData.map(member => ({
