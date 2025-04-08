@@ -81,13 +81,13 @@ I'm curious about how I can help you!`,
     name: "Han Park",
     koreanName: "박종한",
     role: "Founder",
-    company: "CFP & Co.",
-    koreanCompany: "CFP & Co.",
+    company: "CFP",
+    koreanCompany: "CFP",
     companyWebsiteUrl: "https://cfp.han-park.info/",
     snsUrl: "https://www.instagram.com/jonghan_grida/",
     imageUrl: "/image/member/han.jpg",
-    description: "커뮤니티를 중심으로 하는 라이프스타일 테크 스튜디오 CFP & Co.의 설립자. 아티스트와 기업가를 지지하는 비전을 가지고 있다.",
-    englishDescription: "Recently founded a Community-First lifestyle tech studio, CFP & Co. Has a vision to support artists and entrepreneurs.",
+    description: "커뮤니티를 중심으로 하는 라이프스타일 테크 스튜디오 CFP를 만든 사람이자 현재 유일한 오퍼레이터. 아티스트와 기업가를 지지하는 비전을 가지고 있다.",
+    englishDescription: "Recently founded a Community-First lifestyle tech studio, CFP. Has a vision to support artists and entrepreneurs.",
     detailContent:
     
     `AI의 힘을 빌려 Community-First Projects 를 하고 있다. 어릴 때부터 학생회, 스터디 등의 커뮤니티를 만들고 키워왔다.
