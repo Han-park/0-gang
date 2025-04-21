@@ -86,7 +86,7 @@ export default function GuestbookEntries({ lang, statusOptions, loadingText, err
   }
 
   return (
-    <div className="grid grid-cols-1 gap-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
       {entries.map(entry => {
         const name = lang === 'ko' ? entry.name_ko : entry.name_en;
         const roleOrg = lang === 'ko' ? entry['role-org_ko'] : entry['role-org_en'];
@@ -94,28 +94,18 @@ export default function GuestbookEntries({ lang, statusOptions, loadingText, err
         
         return (
           <div key={entry.id} className="overflow-hidden text-white border border-gray-200/80">
-            <div className="flex p-4">
-              {entry.selfie_url && (
-                <div className="flex-shrink-0 w-[160px] md:w-[220px]">
-                  <img
-                    src={entry.selfie_url}
-                    alt={name}
-                    className="w-full h-auto aspect-square object-cover filter sepia contrast-140"
-                  />
-                </div>
-              )}
-              
-              <div className='flex flex-col justify-between flex-grow px-6'>
+            <div className="flex flex-col p-4 h-full">
+              <div className='flex flex-col justify-between flex-grow'>
                 <div>
                   <div className="flex flex-wrap items-center mb-2">
-                    <h3 className="text-base font-medium mr-2">{name}</h3>
+                    <h3 className="text-lg font-medium mr-2">{name}</h3>
                     {roleOrg && (
                       <span className="text-gray-400 text-sm">{roleOrg}</span>
                     )}
                   </div>
                   
                   {entry.status && entry.status.length > 0 && (
-                    <div className="flex flex-wrap gap-2 mb-6">
+                    <div className="flex flex-wrap gap-2 mb-4">
                       {entry.status.map(statusValue => {
                         const option = statusOptions.find(opt => opt.value === statusValue);
                         return option ? (
@@ -130,17 +120,29 @@ export default function GuestbookEntries({ lang, statusOptions, loadingText, err
                       })}
                     </div>
                   )}
-                  
-                  <p className="text-gray-300 text-sm whitespace-pre-wrap">{message}</p>
                 </div>
-                
-                <div className="mt-3 text-sm text-gray-500 mt-6">
-                  {new Date(entry.created_at).toLocaleDateString(lang === 'ko' ? 'ko-KR' : 'en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                  })}
+              </div>
+
+              {entry.selfie_url && (
+                <div className="w-full mb-4">
+                  <img
+                    src={entry.selfie_url}
+                    alt={name}
+                    className="w-full h-auto aspect-square object-cover filter sepia contrast-140"
+                  />
                 </div>
+              )}
+              
+              <div className="flex-grow">
+                <p className="text-gray-300 text-sm whitespace-pre-wrap">{message}</p>
+              </div>
+              
+              <div className="text-sm text-gray-500 mt-auto pt-6">
+                {new Date(entry.created_at).toLocaleDateString(lang === 'ko' ? 'ko-KR' : 'en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
+                })}
               </div>
             </div>
           </div>
