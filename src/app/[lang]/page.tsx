@@ -105,7 +105,7 @@ export default function Home({ params: { lang } }: Props) {
         {/* Guestbook Section */}
         <div className="mt-24 scroll-mt-32" id="guestbook">
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-2xl text-yellow-200">{guestbookTranslations.title}</h2>
+            <h2 className="text-2xl text-white">{guestbookTranslations.title}</h2>
           </div>
           
           <GuestbookEntries 

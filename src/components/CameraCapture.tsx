@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
 import { supabase } from '@/lib/supabase';
 
 interface CameraCaptureProps {
@@ -72,12 +72,6 @@ export default function CameraCapture({
     }
   }, [stopCamera]);
   
-  const retakePicture = useCallback(() => {
-    setCapturedImage(null);
-    setError(null);
-    startCamera();
-  }, [startCamera]);
-  
   const uploadImage = useCallback(async () => {
     if (!capturedImage) return;
     
@@ -118,6 +112,21 @@ export default function CameraCapture({
       setIsUploading(false);
     }
   }, [capturedImage, onCaptureComplete]);
+
+  // Automatically upload image when captured
+  useEffect(() => {
+    if (capturedImage) {
+      uploadImage();
+    }
+  }, [capturedImage, uploadImage]);
+  
+  const handleCapture = useCallback(() => {
+    if (streamRef.current) {
+      takePicture();
+    } else {
+      startCamera();
+    }
+  }, [startCamera, takePicture]);
   
   return (
     <div className="w-full max-w-md mx-auto">
@@ -128,11 +137,18 @@ export default function CameraCapture({
       )}
       
       <div className="relative w-full aspect-square bg-black rounded-lg overflow-hidden">
-        {capturedImage ? (
+        {isUploading ? (
+          <div className="w-full h-full flex items-center justify-center">
+            <div className="text-white text-center">
+              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white mx-auto mb-2"></div>
+              <p>Uploading...</p>
+            </div>
+          </div>
+        ) : capturedImage ? (
           <img 
             src={capturedImage} 
             alt="Captured" 
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover filter sepia contrast-140"
           />
         ) : (
           <video 
@@ -140,7 +156,7 @@ export default function CameraCapture({
             autoPlay 
             playsInline
             muted
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover filter sepia contrast-140"
             onLoadedMetadata={() => {
               if (videoRef.current) {
                 videoRef.current.play();
@@ -152,39 +168,23 @@ export default function CameraCapture({
       </div>
       
       <div className="flex gap-2 mt-4">
-        {!capturedImage ? (
+        {!capturedImage && !isUploading && (
           <button
             type="button"
-            onClick={() => {
-              if (streamRef.current) {
-                takePicture();
-              } else {
-                startCamera();
-              }
-            }}
+            onClick={handleCapture}
             className="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md"
           >
             {buttonText.takePicture}
           </button>
-        ) : (
-          <>
-            <button
-              type="button"
-              onClick={retakePicture}
-              className="flex-1 bg-gray-600 hover:bg-gray-700 text-white py-2 px-4 rounded-md"
-              disabled={isUploading}
-            >
-              {buttonText.retake}
-            </button>
-            <button
-              type="button"
-              onClick={uploadImage}
-              className="flex-1 bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-md"
-              disabled={isUploading}
-            >
-              {isUploading ? 'Uploading...' : buttonText.upload}
-            </button>
-          </>
+        )}
+        {isUploading && (
+          <button
+            type="button"
+            disabled
+            className="flex-1 bg-gray-400 text-white py-2 px-4 rounded-md"
+          >
+            Uploading...
+          </button>
         )}
       </div>
     </div>

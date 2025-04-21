@@ -86,7 +86,7 @@ export default function GuestbookEntries({ lang, statusOptions, loadingText, err
   }
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+    <div className="grid grid-cols-1 gap-4">
       {entries.map(entry => {
         const name = lang === 'ko' ? entry.name_ko : entry.name_en;
         const roleOrg = lang === 'ko' ? entry['role-org_ko'] : entry['role-org_en'];
@@ -96,11 +96,11 @@ export default function GuestbookEntries({ lang, statusOptions, loadingText, err
           <div key={entry.id} className="overflow-hidden text-white border border-gray-200/80">
             <div className="flex p-4">
               {entry.selfie_url && (
-                <div className="flex-shrink-0 w-[160px]">
+                <div className="flex-shrink-0 w-[160px] md:w-[220px]">
                   <img
                     src={entry.selfie_url}
                     alt={name}
-                    className="w-full h-auto object-contain"
+                    className="w-full h-auto aspect-square object-cover filter sepia contrast-140"
                   />
                 </div>
               )}
@@ -108,7 +108,7 @@ export default function GuestbookEntries({ lang, statusOptions, loadingText, err
               <div className='flex flex-col justify-between flex-grow px-6'>
                 <div>
                   <div className="flex flex-wrap items-center mb-2">
-                    <h3 className="text-base font-medium mr-3">{name}</h3>
+                    <h3 className="text-base font-medium mr-2">{name}</h3>
                     {roleOrg && (
                       <span className="text-gray-400 text-sm">{roleOrg}</span>
                     )}
@@ -134,7 +134,7 @@ export default function GuestbookEntries({ lang, statusOptions, loadingText, err
                   <p className="text-gray-300 text-sm whitespace-pre-wrap">{message}</p>
                 </div>
                 
-                <div className="mt-3 text-sm text-gray-500">
+                <div className="mt-3 text-sm text-gray-500 mt-6">
                   {new Date(entry.created_at).toLocaleDateString(lang === 'ko' ? 'ko-KR' : 'en-US', {
                     year: 'numeric',
                     month: 'long',

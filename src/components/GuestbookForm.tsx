@@ -289,7 +289,7 @@ export default function GuestbookForm({ translations, defaultLang = 'en' }: Gues
               <img 
                 src={imageUrl} 
                 alt="Your selfie" 
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover filter sepia contrast-140"
               />
               <button
                 type="button"
@@ -513,7 +513,7 @@ export default function GuestbookForm({ translations, defaultLang = 'en' }: Gues
           
           <div className="p-4 border border-gray-300 rounded-md">
             <div className="mb-2 flex items-center justify-between">
-              <div className="font-medium">
+              <div className="font-medium text-gray-700">
                 {otherLang === 'ko' ? '🇰🇷 한국어' : '🇺🇸 English'}
               </div>
               <div className="text-sm text-gray-500">Translated</div>
