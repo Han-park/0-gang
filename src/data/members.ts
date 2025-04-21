@@ -78,7 +78,7 @@ I'm curious about how I can help you!`,
     isAlumni: false
   },
   {
-    name: "Han Park",
+    name: "Jong-Han Park",
     koreanName: "박종한",
     role: "Founder",
     company: "CFP",

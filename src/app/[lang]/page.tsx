@@ -26,9 +26,9 @@ const content = {
     ...getMemberContent().ko,
   },
   en: {
-    title: "Entrepreneurs' House, Daejang-gan",
+    title: "Entrepreneurs' Hacker House, Blacksmiths",
     location: "Gwangjin-gu, Seoul, South Korea",
-    description1: "Daejang-gan, which means a blacksmith house in korean, is a living space and community platform for young entrepreneurs aiming to build companies valued at over $1 billion. Started in February 2023 by members of the 5AM Club House in Hongdae, Seoul, it primarily consists of founders and co-founders in the tech industry.",
+    description1: "Blacksmiths House is a living space and community platform for young entrepreneurs aiming to build companies valued at over $1 billion. Started in February 2023 by members of the 5AM Club House in Hongdae, Seoul, it primarily consists of founders and co-founders in the tech industry.",
     description2: "Currently home to 6 residents, we hold weekly insight seminars and monthly activities.",
     newsletter: "Newsletter",
     instagram: "Instagram",
@@ -119,7 +119,7 @@ export default function Home({ params: { lang } }: Props) {
         />
         <p className="text-sm opacity-30 text-center">
           This website is designed and published <br/>
-          by Han Park of <Link href="https://cfp.han-park.info" target="_blank" className="underline">CFP & Co.</Link>
+          by Jong-Han of <Link href="https://cfp.han-park.info" target="_blank" className="underline">CFP & Co.</Link>
         </p>
       </footer>
     </main>
