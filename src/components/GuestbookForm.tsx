@@ -222,7 +222,13 @@ export default function GuestbookForm({ translations, defaultLang = 'en' }: Gues
       <div className="bg-white p-6 rounded-lg shadow-md">
         <div className="text-center">
           <h2 className="text-2xl font-bold text-green-600 mb-4">✅</h2>
-          <p className="text-lg">{translations.thankYouMessage}</p>
+          <p className="text-lg text-gray-700 mb-4">{translations.thankYouMessage}</p>
+          <a 
+            href="/#guestbook" 
+            className="inline-block bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md"
+          >
+            View Submitted Guestbook
+          </a>
         </div>
       </div>
     );
@@ -461,7 +467,7 @@ export default function GuestbookForm({ translations, defaultLang = 'en' }: Gues
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div className="p-4 border border-gray-300 rounded-md">
             <div className="mb-2 flex items-center justify-between">
-              <div className="font-medium">
+              <div className="font-medium text-gray-700">
                 {selectedLang === 'ko' ? '🇰🇷 한국어' : '🇺🇸 English'}
               </div>
               <div className="text-sm text-gray-500">Original</div>
@@ -469,20 +475,20 @@ export default function GuestbookForm({ translations, defaultLang = 'en' }: Gues
             
             <div className="mb-4">
               <div className="text-sm text-gray-500 mb-1">{translations.nameLabel}</div>
-              <div className="font-medium">{nameMain}</div>
+              <div className="font-medium text-gray-700">{nameMain}</div>
             </div>
             
             {roleOrgMain && (
               <div className="mb-4">
                 <div className="text-sm text-gray-500 mb-1">{translations.roleOrgLabel}</div>
-                <div className="font-medium">{roleOrgMain}</div>
+                <div className="font-medium text-gray-700">{roleOrgMain}</div>
               </div>
             )}
             
             {selectedStatuses.length > 0 && (
               <div className="mb-4">
                 <div className="text-sm text-gray-500 mb-1">{translations.statusLabel}</div>
-                <div className="font-medium flex flex-wrap gap-2">
+                <div className="font-medium text-gray-700 flex flex-wrap gap-2">
                   {selectedStatuses.map(statusValue => {
                     const option = statusOptions.find(opt => opt.value === statusValue);
                     return option ? (
@@ -501,7 +507,7 @@ export default function GuestbookForm({ translations, defaultLang = 'en' }: Gues
             
             <div className="mb-4">
               <div className="text-sm text-gray-500 mb-1">{translations.messageLabel}</div>
-              <div className="font-medium whitespace-pre-wrap">{messageMain}</div>
+              <div className="font-medium text-gray-700 whitespace-pre-wrap">{messageMain}</div>
             </div>
           </div>
           
