@@ -19,8 +19,8 @@ export function MemberDialog({ member, lang, isOpen, onClose }: MemberDialogProp
   return (
     <Dialog.Root open={isOpen} onOpenChange={onClose}>
       <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 bg-black/70" />
-        <Dialog.Content className="fixed border border-yellow-200/80 left-[50%] top-[50%] max-h-[85vh] w-[85vw] max-w-[800px] translate-x-[-50%] translate-y-[-50%] bg-black p-6 shadow-xl focus:outline-none overflow-y-auto">
+        <Dialog.Overlay className="fixed inset-0 bg-black/70 z-[100]" />
+        <Dialog.Content className="fixed border border-yellow-200/80 left-[50%] top-[50%] max-h-[85vh] w-[85vw] max-w-[800px] translate-x-[-50%] translate-y-[-50%] bg-black p-6 shadow-xl focus:outline-none overflow-y-auto z-[100]">
           <div className="flex flex-col md:flex-row gap-6">
             <div className="relative aspect-[4/5] w-[200px] md:w-auto md:h-[200px] flex-shrink-0 overflow-hidden">
               <Image
