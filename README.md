@@ -20,6 +20,24 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
+## Supabase Setup
+
+This project uses Supabase for backend storage (guestbook photos and entries). To set it up:
+
+1. Create a Supabase account at [supabase.com](https://supabase.com/) and create a new project
+2. Create a storage bucket named `guestbook` with public access
+3. Create a database table called `guestbook_entries` with the following columns:
+   - `id`: UUID (primary key)
+   - `created_at`: timestamp with time zone (default: now())
+   - `name`: text
+   - `message`: text
+   - `image_url`: text
+4. Create a `.env.local` file in the root directory with your Supabase project credentials:
+   ```
+   NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
+   ```
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

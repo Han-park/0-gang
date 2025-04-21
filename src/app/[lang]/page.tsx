@@ -6,6 +6,8 @@ import { MemberShuffle } from "@/components/MemberShuffle";
 import { getMemberContent } from "@/data/members";
 import { SubstackFeed } from '@/components/SubstackFeed';
 import { Header } from "@/components/Header";
+import GuestbookEntries from "@/components/GuestbookEntries";
+import { getGuestbookContent } from "@/data/guestbook";
 
 // Define type for language parameter
 interface Props {
@@ -38,6 +40,7 @@ const content = {
 
 export default function Home({ params: { lang } }: Props) {
   const t = content[lang as keyof typeof content];
+  const guestbookTranslations = getGuestbookContent()[lang as 'ko' | 'en'];
   
   const currentMembers = t.members.filter(member => !member.isAlumni);
   const alumniMembers = t.members.filter(member => member.isAlumni);
@@ -100,11 +103,17 @@ export default function Home({ params: { lang } }: Props) {
         </div>
 
         {/* Guestbook Section */}
-        <div className="mt-24 text-yellow-200 scroll-mt-32" id="guestbook">
-          <h2 className="text-2xl mb-4">{lang === 'ko' ? '방명록' : 'Guestbook'}</h2>
-          <div className="h-64 flex items-center justify-center border border-white/20 rounded">
-            <p className="text-white/50">{lang === 'ko' ? '준비 중입니다' : 'Coming soon'}</p>
+        <div className="mt-24 scroll-mt-32" id="guestbook">
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-2xl text-yellow-200">{guestbookTranslations.title}</h2>
           </div>
+          
+          <GuestbookEntries 
+            lang={lang as 'ko' | 'en'} 
+            statusOptions={guestbookTranslations.statusOptions} 
+            loadingText={guestbookTranslations.guestbookEntries.loading}
+            errorText={guestbookTranslations.guestbookEntries.error}
+          />
         </div>
       </div>
 
