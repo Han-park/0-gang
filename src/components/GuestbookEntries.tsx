@@ -86,51 +86,53 @@ export default function GuestbookEntries({ lang, statusOptions, loadingText, err
   }
 
   return (
-    <div className="space-y-8">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
       {entries.map(entry => {
         const name = lang === 'ko' ? entry.name_ko : entry.name_en;
         const roleOrg = lang === 'ko' ? entry['role-org_ko'] : entry['role-org_en'];
         const message = lang === 'ko' ? entry.message_ko : entry.message_en;
         
         return (
-          <div key={entry.id} className="bg-white rounded-lg shadow-md overflow-hidden text-black">
-            <div className="md:flex">
+          <div key={entry.id} className="overflow-hidden text-white border border-gray-200/80">
+            <div className="flex p-4">
               {entry.selfie_url && (
-                <div className="md:flex-shrink-0 h-48 md:h-auto md:w-48 relative">
+                <div className="flex-shrink-0 w-[160px]">
                   <img
                     src={entry.selfie_url}
                     alt={name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-auto object-contain"
                   />
                 </div>
               )}
               
-              <div className="p-6">
-                <div className="flex flex-wrap items-center mb-2">
-                  <h3 className="text-xl font-bold mr-3">{name}</h3>
-                  {roleOrg && (
-                    <span className="text-gray-600 text-sm">{roleOrg}</span>
-                  )}
-                </div>
-                
-                {entry.status && entry.status.length > 0 && (
-                  <div className="flex flex-wrap gap-2 mb-3">
-                    {entry.status.map(statusValue => {
-                      const option = statusOptions.find(opt => opt.value === statusValue);
-                      return option ? (
-                        <div 
-                          key={statusValue}
-                          className="px-2 py-1 rounded-md text-xs inline-flex items-center"
-                          style={{ backgroundColor: option.color || '#f3f4f6' }}
-                        >
-                          {option.label}
-                        </div>
-                      ) : null;
-                    })}
+              <div className='flex flex-col justify-between flex-grow px-6'>
+                <div>
+                  <div className="flex flex-wrap items-center mb-2">
+                    <h3 className="text-base font-medium mr-3">{name}</h3>
+                    {roleOrg && (
+                      <span className="text-gray-400 text-sm">{roleOrg}</span>
+                    )}
                   </div>
-                )}
-                
-                <p className="text-gray-700 whitespace-pre-wrap">{message}</p>
+                  
+                  {entry.status && entry.status.length > 0 && (
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {entry.status.map(statusValue => {
+                        const option = statusOptions.find(opt => opt.value === statusValue);
+                        return option ? (
+                          <div 
+                            key={statusValue}
+                            className="px-1 py-0.5 rounded-sm text-xs inline-flex items-center border opacity-80"
+                            style={{ color: option.color || '#f3f4f6', borderColor: option.color || '#f3f4f6' }}
+                          >
+                            {option.label}
+                          </div>
+                        ) : null;
+                      })}
+                    </div>
+                  )}
+                  
+                  <p className="text-gray-300 text-sm whitespace-pre-wrap">{message}</p>
+                </div>
                 
                 <div className="mt-3 text-sm text-gray-500">
                   {new Date(entry.created_at).toLocaleDateString(lang === 'ko' ? 'ko-KR' : 'en-US', {
