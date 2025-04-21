@@ -5,6 +5,7 @@ import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { MemberShuffle } from "@/components/MemberShuffle";
 import { getMemberContent } from "@/data/members";
 import { SubstackFeed } from '@/components/SubstackFeed';
+import { Header } from "@/components/Header";
 
 // Define type for language parameter
 interface Props {
@@ -43,11 +44,9 @@ export default function Home({ params: { lang } }: Props) {
 
   return (
     <main className="flex min-h-screen flex-col bg-black">
-      <div className="py-8 px-4 sm:px-8 max-w-screen-lg mx-auto">
-        <div className="flex justify-end mb-4">
-          <LanguageSwitcher currentLang={lang} />
-        </div>
-        <div className="text-left text-yellow-200 flex flex-col gap-4 max-w-lg">
+      <Header currentLang={lang} />
+      <div className="py-8 px-4 sm:px-8 max-w-screen-lg mx-auto pt-24">
+        <div className="text-left text-yellow-200 flex flex-col gap-4 max-w-lg scroll-mt-32" id="about">
           <div>
             <h1 className="text-4xl font-normal">{t.title}</h1>
             <p className="text-sm opacity-80 mt-1">{t.location}</p>
@@ -80,19 +79,16 @@ export default function Home({ params: { lang } }: Props) {
               </Link>
             </div>
           </div>
-
-         
-
         </div>
 
          {/* Substack Feed Embed */}
-         <div className="mt-16">
+         <div className="mt-16 scroll-mt-32" id="posts">
          <h2 className="text-2xl mb-4 text-yellow-200">{t.newsletterTitle}</h2>
             <SubstackFeed/>
           </div>
 
         {/* Current Members Section */}
-        <div className="mt-16 text-yellow-200">
+        <div className="mt-16 text-yellow-200 scroll-mt-32" id="members">
           <h2 className="text-2xl mb-4">{t.currentMembersTitle}</h2>
           <MemberShuffle members={currentMembers} lang={lang} />
         </div>
@@ -101,6 +97,14 @@ export default function Home({ params: { lang } }: Props) {
         <div className="mt-24 text-yellow-200">
           <h2 className="text-2xl mb-4">{t.alumniMembersTitle}</h2>
           <MemberShuffle members={alumniMembers} lang={lang} />
+        </div>
+
+        {/* Guestbook Section */}
+        <div className="mt-24 text-yellow-200 scroll-mt-32" id="guestbook">
+          <h2 className="text-2xl mb-4">{lang === 'ko' ? '방명록' : 'Guestbook'}</h2>
+          <div className="h-64 flex items-center justify-center border border-white/20 rounded">
+            <p className="text-white/50">{lang === 'ko' ? '준비 중입니다' : 'Coming soon'}</p>
+          </div>
         </div>
       </div>
 
