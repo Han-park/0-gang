@@ -27,8 +27,9 @@ const content = {
     newsletter: "뉴스레터",
     instagram: "인스타그램",
     newsletterTitle: "최근 뉴스레터 글",
-    currentMembersTitle: "멤버: 거주 중",
-    alumniMembersTitle: "멤버: 알럼나이",
+    residentialMembersTitle: "대장간의 형제들",
+    townMembersTitle: "대장간 마을 멤버들",
+    townMembershipRecruiting: "대장간 마을 멤버십 모집 예정",
   },
   en: {
     title: "Entrepreneurs' Hacker House, Blacksmiths",
@@ -38,8 +39,9 @@ const content = {
     newsletter: "Newsletter",
     instagram: "Instagram",
     newsletterTitle: "Recent Posts",
-    currentMembersTitle: "Current House Members",
-    alumniMembersTitle: "Alumni Members",
+    residentialMembersTitle: "House Residents",
+    townMembersTitle: "Town Memberships",
+    townMembershipRecruiting: "Town membership recruitment coming soon",
   }
 } as const;
 
@@ -62,10 +64,10 @@ export default async function Home({ params: { lang } }: Props) {
   // Ensure members is an array, default to empty if null/undefined or error
   const allMembers: UserInfo[] = members || [];
 
-  // Filter members fetched from DB, excluding hidden ones
+  // Filter members fetched from DB, excluding hidden ones and prepare lists
   const visibleMembers = allMembers.filter(member => !member.is_hidden);
-  const currentMembers = visibleMembers.filter(member => !member.is_alumni);
-  const alumniMembers = visibleMembers.filter(member => member.is_alumni);
+  const currentMembers = visibleMembers; // Display all visible members in the first section
+  const alumniMembers: UserInfo[] = []; // Keep the town members section empty
 
   return (
     <main className="flex min-h-screen flex-col bg-black">
@@ -112,16 +114,20 @@ export default async function Home({ params: { lang } }: Props) {
             <SubstackFeed/>
           </div>
 
-        {/* Current Members Section */}
+        {/* Residential Members Section */}
         <div className="mt-16 text-yellow-200 scroll-mt-32" id="members">
-          <h2 className="text-2xl mb-4">{t.currentMembersTitle}</h2>
+          <h2 className="text-2xl mb-4">{t.residentialMembersTitle}</h2>
           <MemberShuffle members={currentMembers} lang={lang} />
         </div>
 
-        {/* Alumni Members Section */}
-        <div className="mt-24 text-yellow-200">
-          <h2 className="text-2xl mb-4">{t.alumniMembersTitle}</h2>
-          <MemberShuffle members={alumniMembers} lang={lang} />
+        {/* Town Members Section - Combined Display Logic */}
+        <div className="mt-16 text-yellow-200"> {/* Adjusted margin-top */}
+          <h2 className="text-2xl mb-4">{t.townMembersTitle}</h2>
+          {alumniMembers.length > 0 ? (
+            <MemberShuffle members={alumniMembers} lang={lang} />
+          ) : (
+            <p className="text-white/70 text-center py-4">{t.townMembershipRecruiting}</p>
+          )}
         </div>
 
         {/* Guestbook Section */}
