@@ -3,26 +3,49 @@
 import Image from "next/image";
 import { useState } from "react";
 import { MemberDialog } from "./MemberDialog";
-import { Member } from "@/data/members";  // Import Member type
 
-interface MemberProps extends Member {  // Extend from Member type
+// Define UserInfo type based on the database table
+export interface UserInfo {
+  id: number;
+  name: string;
+  korean_name: string;
+  role: string;
+  company: string; // Assuming this is English company name from context
+  korean_company: string;
+  image_url: string;
+  sns_url?: string | null;
+  description: string; // Assuming this is Korean description from context
+  english_description: string;
+  detail_content?: string | null;
+  english_detail_content?: string | null;
+  is_alumni: boolean;
+  company_website_url?: string | null;
+  is_hidden?: boolean | null; // Add the new column
+}
+
+interface MemberCardProps {
+  member: UserInfo; // Use the new UserInfo type
   lang: string;
 }
 
-export function MemberCard(props: MemberProps) {
+export function MemberCard({ member, lang }: MemberCardProps) { // Destructure member directly
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const { name, koreanName, role, company, imageUrl, description, lang } = props;
-  const displayName = lang === 'ko' ? koreanName : name;
+  const { name, korean_name, role, company, image_url, description, english_description } = member; // Use DB column names
+
+  // Determine display name and description based on lang
+  const displayName = lang === 'ko' ? korean_name : name;
+  const displayDescription = lang === 'ko' ? description : english_description;
+  const displayCompany = lang === 'ko' ? member.korean_company : company;
 
   return (
     <>
-      <div 
+      <div
         className="border border-yellow-200/50 p-4 flex flex-col gap-4 cursor-pointer hover:border-yellow-200/80 transition-colors"
         onClick={() => setIsDialogOpen(true)}
       >
         <div className="relative w-full aspect-[4/5] overflow-hidden">
           <Image
-            src={imageUrl}
+            src={image_url} // Use DB column name
             alt={`${displayName}'s photo`}
             fill
             className="object-cover"
@@ -33,17 +56,17 @@ export function MemberCard(props: MemberProps) {
           <div className="flex items-start justify-between">
             <div>
               <h3 className="font-medium">{displayName}</h3>
-              <p className="text-sm text-yellow-200/60">{role} at {company}</p>
+              <p className="text-sm text-yellow-200/60">{role} at {displayCompany}</p>
             </div>
           </div>
           <p className="text-sm text-yellow-200/80 leading-relaxed">
-            {description}
+            {displayDescription}
           </p>
         </div>
       </div>
 
       <MemberDialog
-        member={props}
+        member={member} // Pass the full member object
         lang={lang}
         isOpen={isDialogOpen}
         onClose={() => setIsDialogOpen(false)}

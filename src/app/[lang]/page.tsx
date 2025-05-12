@@ -3,11 +3,12 @@ import Link from "next/link";
 import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { MemberShuffle } from "@/components/MemberShuffle";
-import { getMemberContent } from "@/data/members";
 import { SubstackFeed } from '@/components/SubstackFeed';
 import { Header } from "@/components/Header";
 import GuestbookEntries from "@/components/GuestbookEntries";
 import { getGuestbookContent } from "@/data/guestbook";
+import { createClient } from '@/lib/supabase/server';
+import { UserInfo } from "@/components/MemberCard";
 
 // Define type for language parameter
 interface Props {
@@ -16,7 +17,7 @@ interface Props {
   };
 }
 
-// Content for each language
+// Content for each language (excluding members data)
 const content = {
   ko: {
     title: "창업가들의 집 '대장간'",
@@ -25,7 +26,9 @@ const content = {
     description2: "현재 6명이 거주하며 매주 인사이트 세미나를 열고, 한달에 한번 '담금질' 이라는 이름으로 액티비티를 진행하고 있습니다.",
     newsletter: "뉴스레터",
     instagram: "인스타그램",
-    ...getMemberContent().ko,
+    newsletterTitle: "최근 뉴스레터 글",
+    currentMembersTitle: "멤버: 거주 중",
+    alumniMembersTitle: "멤버: 알럼나이",
   },
   en: {
     title: "Entrepreneurs' Hacker House, Blacksmiths",
@@ -34,16 +37,35 @@ const content = {
     description2: "Currently home to 6 residents, we hold weekly insight seminars and monthly activities.",
     newsletter: "Newsletter",
     instagram: "Instagram",
-    ...getMemberContent().en,
+    newsletterTitle: "Recent Posts",
+    currentMembersTitle: "Current House Members",
+    alumniMembersTitle: "Alumni Members",
   }
 } as const;
 
-export default function Home({ params: { lang } }: Props) {
+export default async function Home({ params: { lang } }: Props) {
   const t = content[lang as keyof typeof content];
   const guestbookTranslations = getGuestbookContent()[lang as 'ko' | 'en'];
-  
-  const currentMembers = t.members.filter(member => !member.isAlumni);
-  const alumniMembers = t.members.filter(member => member.isAlumni);
+
+  // Fetch members from Supabase
+  const supabase = createClient();
+  const { data: members, error } = await supabase
+    .from('user_info')
+    .select('*')
+    .order('id'); // Fetch all columns, order by id or another relevant column
+
+  if (error) {
+    console.error('Error fetching members:', error);
+    // Optionally, render an error message or fallback UI
+  }
+
+  // Ensure members is an array, default to empty if null/undefined or error
+  const allMembers: UserInfo[] = members || [];
+
+  // Filter members fetched from DB, excluding hidden ones
+  const visibleMembers = allMembers.filter(member => !member.is_hidden);
+  const currentMembers = visibleMembers.filter(member => !member.is_alumni);
+  const alumniMembers = visibleMembers.filter(member => member.is_alumni);
 
   return (
     <main className="flex min-h-screen flex-col bg-black">

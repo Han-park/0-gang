@@ -4,17 +4,20 @@ import * as Dialog from '@radix-ui/react-dialog';
 import { Cross2Icon, ArrowTopRightIcon } from '@radix-ui/react-icons';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Member } from '@/data/members';
+import { UserInfo } from './MemberCard';
 
 interface MemberDialogProps {
-  member: Member;
+  member: UserInfo;
   lang: string;
   isOpen: boolean;
   onClose: () => void;
 }
 
 export function MemberDialog({ member, lang, isOpen, onClose }: MemberDialogProps) {
-  const displayName = lang === 'ko' ? member.koreanName : member.name;
+  const displayName = lang === 'ko' ? member.korean_name : member.name;
+  const displayDescription = lang === 'ko' ? member.description : member.english_description;
+  const displayDetailContent = lang === 'ko' ? member.detail_content : member.english_detail_content;
+  const displayCompany = lang === 'ko' ? member.korean_company : member.company;
 
   return (
     <Dialog.Root open={isOpen} onOpenChange={onClose}>
@@ -24,7 +27,7 @@ export function MemberDialog({ member, lang, isOpen, onClose }: MemberDialogProp
           <div className="flex flex-col md:flex-row gap-6">
             <div className="relative aspect-[4/5] w-[200px] md:w-auto md:h-[200px] flex-shrink-0 overflow-hidden">
               <Image
-                src={member.imageUrl}
+                src={member.image_url}
                 alt={`${displayName}'s photo`}
                 fill
                 className="object-cover"
@@ -35,23 +38,23 @@ export function MemberDialog({ member, lang, isOpen, onClose }: MemberDialogProp
             <div className="space-y-4 flex-grow">
               <div>
                 <h2 className="text-xl font-medium text-yellow-200">{displayName}</h2>
-                <p className="text-sm text-yellow-200/60">{member.role} at {member.company}</p>
+                <p className="text-sm text-yellow-200/60">{member.role} at {displayCompany}</p>
               </div>
               
-              {member.detailContent ? (
+              {displayDetailContent ? (
                 <div className="text-sm text-yellow-200/80 leading-relaxed whitespace-pre-wrap">
-                  {member.detailContent}
+                  {displayDetailContent}
                 </div>
               ) : (
                 <p className="text-sm text-yellow-200/80 leading-relaxed">
-                  {member.description}
+                  {displayDescription}
                 </p>
               )}
               <div className="flex gap-2 pt-2">
-              {member.snsUrl && (
+              {member.sns_url && (
                 <div>
                   <Link
-                    href={member.snsUrl}
+                    href={member.sns_url}
                     target="_blank"
                     className="inline-flex items-center gap-1 text-sm text-yellow-200/60 hover:text-yellow-200 transition-colors"
                   >
@@ -60,10 +63,10 @@ export function MemberDialog({ member, lang, isOpen, onClose }: MemberDialogProp
                   </Link>
                 </div>
               )}
-              {member.companyWebsiteUrl && (
+              {member.company_website_url && (
                 <div>
                   <Link
-                    href={member.companyWebsiteUrl}
+                    href={member.company_website_url}
                     target="_blank"
                     className="inline-flex items-center gap-1 text-sm text-yellow-200/60 hover:text-yellow-200 transition-colors"
                   >
