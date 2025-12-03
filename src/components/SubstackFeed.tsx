@@ -1,60 +1,69 @@
 'use client';
 
-import { useEffect, useCallback } from 'react';
+import { useEffect } from 'react';
 
 export function SubstackFeed() {
-  // Function to add custom styles to Substack feed
-  const addCustomStyles = useCallback(() => {
+  useEffect(() => {
+    // Load the Supascribe script
+    const script = document.createElement('script');
+    script.src = "https://js.supascribe.com/v1/loader/IZ7fq8GNuyYVFtmC3DRvQEL4nb23.js";
+    script.async = true;
+    document.body.appendChild(script);
+
+    // Add custom styles for Supascribe feed
     const style = document.createElement('style');
+    style.setAttribute('data-supascribe-custom-styles', 'true');
     style.textContent = `
-      #substack-feed-embed .w-20 {
-        border-radius: 0px !important;
+      .supascribe-feed-widget {
+        background-color: transparent !important;
       }
-       #substack-feed-embed .sfw-title {
-        font-size: 1rem !important; 
-        line-height: 1.25rem !important;
-        font-weight: 400 !important; 
+      .supascribe-widget .bg-gray-200,
+      .supascribe-widget .bg-gray-50,
+      .supascribe-widget .bg-white,
+      .supascribe-widget .rounded,
+      .supascribe-widget .rounded-lg,
+      .supascribe-widget div[class*="bg-"] {
+        background-color: transparent !important;
+        border-radius: 0 !important;
       }
-      #substack-feed-embed .text-ellipsis {
-        font-size: 0.875rem !important;
+      .supascribe-widget .sfw-title,
+      .supascribe-widget .sfw-title span,
+      .supascribe-widget .text-gray-500,
+      .supascribe-widget .text-xs,
+      .supascribe-widget a,
+      .supascribe-widget div,
+      .supascribe-widget * {
+        color: rgb(254, 240, 138) !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        font-weight: 400 !important;
+      }
+      .supascribe-widget .w-20,
+      .supascribe-widget .md\\:w-\\[130px\\],
+      .supascribe-widget .lg\\:w-\\[164px\\] {
+        border-radius: 0 !important;
       }
     `;
     document.head.appendChild(style);
-  }, []);
-
-  useEffect(() => {
-    // Configure the widget
-    (window as any).SubstackFeedWidget = {
-      substackUrl: "daejangang.substack.com",
-      posts: 4,
-      layout: "right",
-      hidden: ["author"],
-      colors: {
-        primary: "#CBC06E",
-        secondary: "#A29A58",
-        background: "#000000",
-      }
-    };
-
-    // Load the Substack script
-    const script = document.createElement('script');
-    script.src = "https://substackapi.com/embeds/feed.js";
-    script.async = true;
-    document.body.appendChild(script);
-    
-    // Apply custom styles after a short delay to ensure the feed is loaded
-    setTimeout(addCustomStyles, 1000);
 
     return () => {
-      // Cleanup
-      document.body.removeChild(script);
-      // Remove the style element if needed
-      const styleElement = document.querySelector('style[data-substack-custom-styles]');
+      // Cleanup: remove script when component unmounts
+      if (document.body.contains(script)) {
+        document.body.removeChild(script);
+      }
+      // Remove custom styles
+      const styleElement = document.querySelector('style[data-supascribe-custom-styles]');
       if (styleElement) {
         document.head.removeChild(styleElement);
       }
     };
-  }, [addCustomStyles]);
+  }, []);
 
-  return <div id="substack-feed-embed" />;
+  return (
+    <div
+      data-supascribe-embed-id="660245007149"
+      data-supascribe-feed
+      className='max-w-xl'
+    />
+  );
 } 
