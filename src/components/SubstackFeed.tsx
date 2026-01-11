@@ -33,7 +33,7 @@ export function SubstackFeed() {
       .supascribe-widget a,
       .supascribe-widget div,
       .supascribe-widget * {
-        color: rgb(254, 240, 138) !important;
+        color: rgba(254, 240, 138, 0.8) !important;
         padding-left: 0 !important;
         padding-right: 0 !important;
         font-weight: 400 !important;
@@ -42,14 +42,6 @@ export function SubstackFeed() {
       .supascribe-widget .md\\:w-\\[130px\\],
       .supascribe-widget .lg\\:w-\\[164px\\] {
         border-radius: 0 !important;
-      }
-      .supascribe-widget > div > a {
-        border-bottom: 1px solid rgba(254, 240, 138, 0.2) !important;
-        padding-bottom: 1rem !important;
-        margin-bottom: 1rem !important;
-      }
-      .supascribe-widget > div > a:last-child {
-        border-bottom: none !important;
       }
     `;
     document.head.appendChild(style);
