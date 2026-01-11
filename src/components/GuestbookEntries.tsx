@@ -86,7 +86,7 @@ export default function GuestbookEntries({ lang, statusOptions, loadingText, err
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
       {entries.map(entry => {
         const name = lang === 'ko' ? entry.name_ko : entry.name_en;
         const roleOrg = lang === 'ko' ? entry['role-org_ko'] : entry['role-org_en'];
