@@ -43,6 +43,14 @@ export function SubstackFeed() {
       .supascribe-widget .lg\\:w-\\[164px\\] {
         border-radius: 0 !important;
       }
+      .supascribe-widget > div > a {
+        border-bottom: 1px solid rgba(254, 240, 138, 0.2) !important;
+        padding-bottom: 1rem !important;
+        margin-bottom: 1rem !important;
+      }
+      .supascribe-widget > div > a:last-child {
+        border-bottom: none !important;
+      }
     `;
     document.head.appendChild(style);
 

@@ -9,6 +9,7 @@ import GuestbookEntries from "@/components/GuestbookEntries";
 import { getGuestbookContent } from "@/data/guestbook";
 import { createClient } from '@/lib/supabase/server';
 import { UserInfo } from "@/components/MemberCard";
+import { ImageCarousel } from "@/components/ImageCarousel";
 
 // Define type for language parameter
 interface Props {
@@ -22,8 +23,8 @@ const content = {
   ko: {
     title: "창업가들의 집 '대장간'",
     location: "서울시 광진구, 대한민국",
-    description1: "대장간은 1조 이상의 기업 가치를 만들 청년 창업가들이 모여 사는 공간이자 커뮤니티 플랫폼입니다. 2021년 서울 홍대에 만들어진 5AM Club House의 멤버들이 2023년 2월 시작했으며, 주로 IT 분야의 창업자 혹은 공동 창업자가 모여 있습니다.",
-    description2: "현재 6명이 거주하며 매주 인사이트 세미나를 열고, 한달에 한번 '담금질' 이라는 이름으로 액티비티를 진행하고 있습니다.",
+    description1: "대장간은 1조 이상의 기업 가치를 만들 청년 창업가들이 모여 사는 공간이자 커뮤니티 플랫폼입니다. 2023년 2월 만들어졌으며, 주로 IT 분야의 창업자 혹은 공동 창업자가 모여 있습니다.",
+    description2: "현재 7명이 거주하며 매주 '형제 모임'을 갖고, 한달에 한번 '담금질' 이라는 이름으로 액티비티를 진행하고 있습니다.",
     newsletter: "뉴스레터",
     instagram: "인스타그램",
     newsletterTitle: "최근 뉴스레터 글",
@@ -34,8 +35,8 @@ const content = {
   en: {
     title: "Entrepreneurs' Hacker House, Blacksmiths",
     location: "Gwangjin-gu, Seoul, South Korea",
-    description1: "Blacksmiths House is a living space and community platform for young entrepreneurs aiming to build companies valued at over $1 billion. Started in February 2023 by members of the 5AM Club House in Hongdae, Seoul, it primarily consists of founders and co-founders in the tech industry.",
-    description2: "Currently home to 6 residents, we hold weekly insight seminars and monthly activities.",
+    description1: "Blacksmiths House is a living space and community platform for young entrepreneurs aiming to build companies valued at over $1 billion. Founded in February 2023, it primarily consists of founders and co-founders in the tech industry.",
+    description2: "Currently home to 7 residents, we hold weekly 'Brotherhood Meetings' and monthly trip.",
     newsletter: "Newsletter",
     instagram: "Instagram",
     newsletterTitle: "Recent Posts",
@@ -67,44 +68,52 @@ export default async function Home({ params: { lang } }: Props) {
   // Filter members fetched from DB, excluding hidden ones and prepare lists
   const visibleMembers = allMembers.filter(member => !member.is_hidden);
   const currentMembers = visibleMembers; // Display all visible members in the first section
-  const alumniMembers: UserInfo[] = []; // Keep the town members section empty
+  // const alumniMembers: UserInfo[] = []; // Keep the town members section empty
 
   return (
     <main className="flex min-h-screen flex-col bg-black">
       <Header currentLang={lang} />
       <div className="py-8 px-4 sm:px-8 max-w-screen-lg mx-auto pt-24">
-        <div className="text-left text-yellow-200 flex flex-col gap-4 max-w-lg scroll-mt-32" id="about">
-          <div>
-            <h1 className="text-4xl font-normal">{t.title}</h1>
-            <p className="text-sm opacity-80 mt-1">{t.location}</p>
-          </div>
-          <div>
-            <p className="text-sm opacity-80">{t.description1}</p>
-          </div>
-          <div>
-            <p className="text-sm opacity-80">{t.description2}</p>
+        {/* About Section with Carousel */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 scroll-mt-32" id="about">
+          <div className="text-left text-yellow-200 flex flex-col gap-4">
+            <div>
+              <h1 className="text-4xl font-normal">{t.title}</h1>
+              <p className="text-sm opacity-80 mt-1">{t.location}</p>
+            </div>
+            <div>
+              <p className="text-sm opacity-80">{t.description1}</p>
+            </div>
+            <div>
+              <p className="text-sm opacity-80">{t.description2}</p>
+            </div>
+
+            {/* Social Links */}
+            <div className="mt-4 text-white/50">
+              <div className="flex gap-3">
+                <Link
+                  href="https://daejangang.substack.com/"
+                  target="_blank"
+                  className="px-3 py-1 border border-white/50 text-sm hover:bg-white/90 hover:text-zinc-900 transition-colors flex items-center gap-1"
+                >
+                  {t.newsletter}
+                  <ArrowTopRightIcon className="w-3 h-3" />
+                </Link>
+                <Link
+                  href="https://www.instagram.com/daejangang_/"
+                  target="_blank"
+                  className="px-3 py-1 border border-white/50 text-sm hover:bg-white/90 hover:text-zinc-900 transition-colors flex items-center gap-1"
+                >
+                  {t.instagram}
+                  <ArrowTopRightIcon className="w-3 h-3" />
+                </Link>
+              </div>
+            </div>
           </div>
 
-          {/* Social Links */}
-          <div className="mt-4 text-white/50">
-            <div className="flex gap-3">
-              <Link 
-                href="https://daejangang.substack.com/" 
-                target="_blank"
-                className="px-3 py-1 border border-white/50 text-sm hover:bg-white/90 hover:text-zinc-900 transition-colors flex items-center gap-1"
-              >
-                {t.newsletter}
-                <ArrowTopRightIcon className="w-3 h-3" />
-              </Link>
-              <Link 
-                href="https://www.instagram.com/daejangang_/" 
-                target="_blank"
-                className="px-3 py-1 border border-white/50 text-sm hover:bg-white/90 hover:text-zinc-900 transition-colors flex items-center gap-1"
-              >
-                {t.instagram}
-                <ArrowTopRightIcon className="w-3 h-3" />
-              </Link>
-            </div>
+          {/* Image Carousel */}
+          <div className="h-[400px] lg:h-[300px]">
+            <ImageCarousel />
           </div>
         </div>
 
@@ -121,14 +130,14 @@ export default async function Home({ params: { lang } }: Props) {
         </div>
 
         {/* Town Members Section - Combined Display Logic */}
-        <div className="mt-16 text-yellow-200"> {/* Adjusted margin-top */}
+        {/* <div className="mt-16 text-yellow-200">
           <h2 className="text-2xl mb-4">{t.townMembersTitle}</h2>
           {alumniMembers.length > 0 ? (
             <MemberShuffle members={alumniMembers} lang={lang} />
           ) : (
             <p className="text-white/70 text-center py-4">{t.townMembershipRecruiting}</p>
           )}
-        </div>
+        </div> */}
 
         {/* Guestbook Section */}
         <div className="mt-24 scroll-mt-32" id="guestbook">
